@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdTableModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CdkTableModule } from '@angular/cdk';
 
 import 'hammerjs';
 
@@ -34,6 +35,8 @@ import { PageChefComponent } from './page-chef/page-chef.component';
     HttpModule,
     BrowserModule,
     MaterialModule,
+    MdTableModule,
+    CdkTableModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],

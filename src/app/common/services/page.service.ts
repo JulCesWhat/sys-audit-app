@@ -21,7 +21,7 @@ export class PageService {
   }
 
   private getRequestOptions() {
-    const headers = new Headers({'Content-Type': 'text/plain'});
+    const headers = new Headers({'Content-Type': 'application/json'});
     return new RequestOptions({headers: headers});
   }
 
