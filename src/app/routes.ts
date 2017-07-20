@@ -8,13 +8,13 @@ export const appRoutes: Routes = [
     {
         path: 'awsData', component: PageAwsComponent,
         resolve: {
-            news: PageAwsResolverService
+            awsData: PageAwsResolverService
         }
     },
     {
         path: 'chefData', component: PageChefComponent,
         resolve: {
-            news: PageChefResolverService
+            chefData: PageChefResolverService
         }
     },
     //   { 

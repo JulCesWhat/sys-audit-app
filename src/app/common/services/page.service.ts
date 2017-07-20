@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Subject, Observable } from 'rxjs/RX';
 import { environment } from './../../../environments/environment';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class PageService {
@@ -16,7 +21,7 @@ export class PageService {
   }
 
   private getRequestOptions() {
-    const headers = new Headers({'Content-Type': 'application/json', 'X-XSRF-TOKEN': this.xsrfToken});
+    const headers = new Headers({'Content-Type': 'text/plain'});
     return new RequestOptions({headers: headers});
   }
 
@@ -25,14 +30,14 @@ export class PageService {
   }
 
   getAWSData(): Observable<any[]> {
-    return this._http.get(this._backEndUrl + "/newsGalore", this.getRequestOptions())
+    return this._http.get(this._backEndUrl + "/awsData", this.getRequestOptions())
             .map((response: Response) => <any[]>response.json())
             //.do(data => (this.NewsHomeData = <INewsCategory[]>(JSON.stringify(data))))//console.log("All: " + JSON.stringify(data)))
             .catch(this.handleError);
   };
 
-  getChefData(category: string): Observable<any[]> {
-    return this._http.get(this._backEndUrl + '/newsGalore/' + category, this.getRequestOptions())
+  getChefData(): Observable<any[]> {
+    return this._http.get(this._backEndUrl + '/chefData', this.getRequestOptions())
             .map((response: Response) => <any>response.json())
             //.do(data => (this.NewsCategoryData = JSON.stringify(data)))
             .catch(this.handleError);

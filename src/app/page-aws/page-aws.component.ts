@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-aws',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-aws.component.css']
 })
 export class PageAwsComponent implements OnInit {
-
-  constructor() { }
+  
+  content: any
+  
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    console.log("Was I able to get here!!!!!");
+    this.content = this.route.snapshot.data['awsData'];
   }
 
 }
