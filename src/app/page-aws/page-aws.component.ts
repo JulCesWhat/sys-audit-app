@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ec2Item } from './../common/models/data.model';
 
@@ -15,9 +15,9 @@ import 'rxjs/add/observable/fromEvent';
 
 
 @Component({
-    selector: 'app-page-aws',
-    templateUrl: './page-aws.component.html',
-    styleUrls: ['./page-aws.component.css']
+  selector: 'app-page-aws',
+  templateUrl: './page-aws.component.html',
+  styleUrls: ['./page-aws.component.css']
 })
 export class PageAwsComponent {
 
@@ -26,22 +26,23 @@ export class PageAwsComponent {
   dataSource: ExampleDataSource | null;
   exampleDatabase: ExampleDatabase
 
-  constructor(private route: ActivatedRoute) {
-      this.ec2Data = this.route.snapshot.data['awsData'];
-      this.exampleDatabase = new ExampleDatabase(this.ec2Data);
-  }
-
   @ViewChild('filter') filter: ElementRef;
+
+  constructor(private route: ActivatedRoute, private changeDetector: ChangeDetectorRef) {
+    this.ec2Data = this.route.snapshot.data['awsData'];
+    this.exampleDatabase = new ExampleDatabase(this.ec2Data);
+  }
 
   ngOnInit() {
     this.dataSource = new ExampleDataSource(this.exampleDatabase);
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
-        .debounceTime(150)
-        .distinctUntilChanged()
-        .subscribe(() => {
-          if (!this.dataSource) { return; }
-          this.dataSource.filter = this.filter.nativeElement.value;
-        });
+      .debounceTime(150)
+      .distinctUntilChanged()
+      .subscribe(() => {
+        if (!this.dataSource) { return; }
+        this.dataSource.filter = this.filter.nativeElement.value;
+      });
+    this.changeDetector.detectChanges();
   }
 
 }
@@ -49,22 +50,13 @@ export class PageAwsComponent {
 
 /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleDatabase {
-    /** Stream that emits whenever the data has been modified. */
-    dataChange: BehaviorSubject<ec2Item[]> = new BehaviorSubject<ec2Item[]>([]);
-    get data(): ec2Item[] { return this.dataChange.value; }
+  /** Stream that emits whenever the data has been modified. */
+  dataChange: BehaviorSubject<ec2Item[]> = new BehaviorSubject<ec2Item[]>([]);
+  get data(): ec2Item[] { return this.dataChange.value; }
 
-    constructor(ec2DataItems: ec2Item[]) {
-        // Fill up the database with 100 users.
-        for (let i = 0; i < ec2DataItems.length; i++) {
-          this.addEC2Data(ec2DataItems[i]);
-        }
-    }
-
-    addEC2Data(ec2Single: ec2Item) {
-        const copiedData = this.data.slice();
-        copiedData.push(ec2Single);
-        this.dataChange.next(copiedData);
-    }
+  constructor(ec2DataItems: ec2Item[]) {
+    this.dataChange.next(ec2DataItems)
+  }
 }
 
 
@@ -99,5 +91,5 @@ export class ExampleDataSource extends DataSource<any> {
     });
   }
 
-  disconnect() {}
+  disconnect() { }
 }

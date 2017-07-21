@@ -37,7 +37,7 @@ export class PageService {
   };
 
   getChefData(): Observable<any[]> {
-    return this._http.get(this._backEndUrl + '/chefData', this.getRequestOptions())
+    return this._http.get(this._backEndUrl + '/cheffData', this.getRequestOptions())
             .map((response: Response) => <any>response.json())
             //.do(data => (this.NewsCategoryData = JSON.stringify(data)))
             .catch(this.handleError);
