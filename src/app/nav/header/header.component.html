@@ -1,7 +1,10 @@
 <md-toolbar>
-  <span>First Row</span>
 
-  <md-toolbar-row>
-    <span>Second Row</span>
-  </md-toolbar-row>
+  <span (click)="sidebarToggle()">Application Title</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <span>Right Aligned Text</span>
+
 </md-toolbar>

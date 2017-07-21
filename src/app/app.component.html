@@ -1,4 +1,4 @@
-<app-header>
+<app-header (toggleSideBar)="sidebarToggle($event)">
 </app-header>
 
 <md-sidenav-container class="example-container">
@@ -7,10 +7,6 @@
   </md-sidenav>
 
   <div class="example-sidenav-content">
-      <button type="button" md-button (click)="sidenav.open()">
-          Open sidenav
-      </button>
-
 
       <router-outlet></router-outlet>
 
