@@ -10,17 +10,36 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="cDName">
+      <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+    </ng-container>
+
     <!-- ID Column -->
-    <ng-container cdkColumnDef="userPlatform">
+    <ng-container cdkColumnDef="cDPlatform">
       <md-header-cell *cdkHeaderCellDef> Platform </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.platform}} </md-cell>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container cdkColumnDef="userName">
-      <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+    <!-- ID Column -->
+    <ng-container cdkColumnDef="cDEnvironment">
+      <md-header-cell *cdkHeaderCellDef> Environment </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.environment}} </md-cell>
     </ng-container>
+
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="cDRoles">
+      <md-header-cell *cdkHeaderCellDef> Roles </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.roles}} </md-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="cdSecure">
+      <md-header-cell *cdkHeaderCellDef> Secure </md-header-cell>
+      <md-cell *cdkCellDef="let row" [style.color]="setColor(row.secure)"> {{row.secure}} </md-cell>
+    </ng-container>
+
 
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
     <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>

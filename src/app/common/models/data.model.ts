@@ -11,6 +11,6 @@ export interface chefItem {
 	name: 			string
 	platform: 		string
 	environment: 	string
-	recipes: 		string[]
-	roles: 			string[]
+	secure: 			string
+	roles: 			string
 }

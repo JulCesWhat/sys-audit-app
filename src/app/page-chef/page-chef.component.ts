@@ -21,7 +21,7 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class PageChefComponent implements OnInit {
 
-  displayedColumns = ['userPlatform', 'userName'];
+  displayedColumns = ['cDName', 'cDPlatform', 'cDEnvironment', 'cDRoles', 'cdSecure'];
   chefData: chefItem[]
   dataSource: ExampleDataSource | null;
   exampleDatabase: ExampleDatabase
@@ -45,6 +45,13 @@ export class PageChefComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
+    setColor(cDSecureValue: string) {
+      var color:string = "green";
+      if (cDSecureValue === "false") {
+        color = "red";
+      }
+      return color;
+    }
 }
 
 /** An example database that the data source uses to retrieve data for the table. */
