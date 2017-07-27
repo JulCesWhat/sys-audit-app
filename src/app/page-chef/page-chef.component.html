@@ -1,42 +1,48 @@
 <div class="example-container mat-elevation-z8">
   <div class="example-header">
     <md-input-container floatPlaceholder="never">
-      <input mdInput #filter placeholder="Filter users">
+      <input (blur)="onBlur()" (focus)="onFocus()" mdInput #filter placeholder="Filter users">
     </md-input-container>
   </div>
 
-  <md-table #table [dataSource]="dataSource">
+  <md-table #table [dataSource]="dataSource" mdSort>
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Name Column -->
-    <ng-container cdkColumnDef="cDName">
-      <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+    <ng-container cdkColumnDef="cdName">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Name </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
     </ng-container>
 
-    <!-- ID Column -->
-    <ng-container cdkColumnDef="cDPlatform">
-      <md-header-cell *cdkHeaderCellDef> Platform </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.platform}} </md-cell>
+    <!-- IP Column -->
+    <ng-container cdkColumnDef="cdAdressIP">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> IP Adress </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.adressIP}} </md-cell>
     </ng-container>
 
-    <!-- ID Column -->
-    <ng-container cdkColumnDef="cDEnvironment">
-      <md-header-cell *cdkHeaderCellDef> Environment </md-header-cell>
+    <!-- Environment Column -->
+    <ng-container cdkColumnDef="cdEnvironment">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Environment </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.environment}} </md-cell>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container cdkColumnDef="cDRoles">
-      <md-header-cell *cdkHeaderCellDef> Roles </md-header-cell>
+    <!-- Roles Column -->
+    <ng-container cdkColumnDef="cdRoles">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Roles </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.roles}} </md-cell>
     </ng-container>
 
-    <!-- Name Column -->
+    <!-- Roles Column -->
+    <ng-container cdkColumnDef="cdPlatform">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Platform </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.platform}} </md-cell>
+    </ng-container>
+
+    <!-- Secure Column -->
     <ng-container cdkColumnDef="cdSecure">
-      <md-header-cell *cdkHeaderCellDef> Secure </md-header-cell>
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Secure </md-header-cell>
       <md-cell *cdkCellDef="let row" [style.color]="setColor(row.secure)"> {{row.secure}} </md-cell>
     </ng-container>
 
