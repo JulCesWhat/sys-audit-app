@@ -107,7 +107,17 @@ export class ExampleDataSource extends DataSource<any> {
 
       if (this._filterAction) {
         return this._exampleDatabase.data.slice().filter((item: ec2Item) => {
-          let searchStr = (item.name + item.id).toLowerCase();
+          
+          let searchStr: string;
+          switch (this._sort.active) {
+            //case 'awsName': searchStr = (item.name).toLocaleLowerCase(); break;
+            case "awsOwner": searchStr = (item.owner).toLocaleLowerCase(); break;
+            case "awsIntanceID": searchStr = (item.instanceId).toLocaleLowerCase(); break;
+            case "awsPrivateIP": searchStr = (item.privateIP).toLocaleLowerCase(); break;
+            //case "awsManaged": searchStr = (item.managedByChef).toLocaleLowerCase(); break;
+            default: searchStr = (item.name).toLocaleLowerCase(); break;
+          }
+
           return searchStr.indexOf(this.filter.toLowerCase()) != -1;
         });
       } else {
@@ -132,8 +142,6 @@ export class ExampleDataSource extends DataSource<any> {
         case 'awsIntanceID': [propertyA, propertyB] = [a.instanceId, b.instanceId]; break;
         case 'awsPrivateIP': [propertyA, propertyB] = [a.privateIP, b.privateIP]; break;
         case 'awsManaged': [propertyA, propertyB] = [a.managedByChef, b.managedByChef]; break;
-        //case 'color': [propertyA, propertyB] = [a.color, b.color]; break;
-        //case 'color': [propertyA, propertyB] = [a.color, b.color]; break;
       }
 
       let valueA = isNaN(+propertyA) ? propertyA : +propertyA;

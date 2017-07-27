@@ -22,7 +22,7 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class PageChefComponent implements OnInit {
 
-  displayedColumns = ['cdName', 'cdAdressIP', 'cdEnvironment', 'cdRoles', 'cdPlatform', 'cdSecure'];
+  displayedColumns = ['cdName', 'cdAdressIP', 'cdEnvironment', 'cdPlatform', 'cdSecure'];
   chefData: chefItem[]
   dataSource: ExampleDataSource | null;
   exampleDatabase: ExampleDatabase
@@ -108,10 +108,16 @@ export class ExampleDataSource extends DataSource<any> {
       if (this._filterAction) {
         return this._exampleDatabase.data.slice().filter((item: chefItem) => {
 
-          let searchStr = (item.name).toLowerCase();
+          let searchStr: string;
           switch (this._sort.active) {
-            case "cdName": searchStr = (item.name).toLowerCase(); break;
+            //case 'cdName': searchStr = (item.name).toLocaleLowerCase(); break;
             case "cdAdressIP": searchStr = (item.adressIP).toLocaleLowerCase(); break;
+            case "cdEnvironment": searchStr = (item.environment).toLocaleLowerCase(); break;
+            case "cdAdressIP": searchStr = (item.adressIP).toLocaleLowerCase(); break;
+            //case "cdRoles": searchStr = (item.roles).toLocaleLowerCase(); break;
+            case "cdPlatform": searchStr = (item.platform).toLocaleLowerCase(); break;
+            //case "cdSecure": searchStr = (item.secure).toLocaleLowerCase(); break;
+            default: searchStr = (item.name).toLocaleLowerCase(); break;
           }
 
           return searchStr.indexOf(this.filter.toLowerCase()) != -1;
@@ -136,7 +142,7 @@ export class ExampleDataSource extends DataSource<any> {
         case 'cdName': [propertyA, propertyB] = [a.name, b.name]; break;
         case 'cdAdressIP': [propertyA, propertyB] = [a.adressIP, b.adressIP]; break;
         case 'cdEnvironment': [propertyA, propertyB] = [a.environment, b.environment]; break;
-        case 'cdRoles': [propertyA, propertyB] = [a.roles, b.roles]; break;
+        //case 'cdRoles': [propertyA, propertyB] = [a.roles, b.roles]; break;
         case 'cdPlatform': [propertyA, propertyB] = [a.platform, b.platform]; break;
         case 'cdSecure': [propertyA, propertyB] = [a.secure, b.secure]; break;
       }
