@@ -7,10 +7,19 @@ import { MdSidenav } from '@angular/material';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isDarkTheme: boolean
   @ViewChild('sidenav') sidenav:MdSidenav;
-  title = 'app';
 
-  sidebarToggle(toggle: boolean) {
+  constructor() {
+    this.isDarkTheme = false
+    //overlayContainer.themeClass = 'unicorn-dark-theme';
+  }
+
+  onSidebarToggle(toggle: boolean): void {
       this.sidenav.open()
+  }
+
+  onThemeToggle(theme: boolean): void {
+    this.isDarkTheme = !this.isDarkTheme;
   }
 }

@@ -1,16 +1,19 @@
-<app-header (toggleSideBar)="sidebarToggle($event)">
-</app-header>
+<div [class.unicorn-dark-theme]="isDarkTheme">
+  <app-header (toggleSideBar)="onSidebarToggle($event)" (toggleTheme)="onThemeToggle($event)">
+  </app-header>
 
-<md-sidenav-container class="example-container">
-  <md-sidenav #sidenav class="example-sidenav">
-    <app-side-bar></app-side-bar>
-  </md-sidenav>
+  <md-sidenav-container class="example-container">
 
-  <div class="example-sidenav-content">
+    <md-sidenav #sidenav class="example-sidenav">
+      <app-side-bar></app-side-bar>
+    </md-sidenav>
 
-    <router-outlet></router-outlet>
+    <div class="example-sidenav-content">
 
-  </div>
-</md-sidenav-container>
+      <router-outlet></router-outlet>
 
-<app-footer></app-footer>
+    </div>
+  </md-sidenav-container>
+
+  <app-footer></app-footer>
+</div>

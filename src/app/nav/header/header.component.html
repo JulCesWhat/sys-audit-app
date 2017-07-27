@@ -1,10 +1,10 @@
-<md-toolbar>
-
-  <span (click)="sidebarToggle()">System Audit</span>
+<md-toolbar color="primary">
+  <md-icon (click)="sidebarToggle()">menu</md-icon>
+  <span>System Audit</span>
 
   <!-- This fills the remaining space of the current row -->
-  <span class="example-fill-remaining-space"></span>
+  <span class="spacer"></span>
 
-  <span>Right Aligned Text</span>
+  <md-button-toggle (click)="themeToggle()">Toggle me!</md-button-toggle>
 
 </md-toolbar>

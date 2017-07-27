@@ -2,7 +2,7 @@
 .example-container {
   display: flex;
   flex-direction: column;
-  max-height: 800px;
+  max-height: 1000px;
   min-width: 1300px;
 }
 
