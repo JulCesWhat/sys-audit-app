@@ -21,6 +21,7 @@ import { FooterComponent } from './nav/footer/footer.component';
 import { SideBarComponent } from './nav/side-bar/side-bar.component';
 import { PageAwsComponent } from './page-aws/page-aws.component';
 import { PageChefComponent } from './page-chef/page-chef.component';
+import { Page404Component } from './page-404/page-404.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PageChefComponent } from './page-chef/page-chef.component';
     FooterComponent,
     SideBarComponent,
     PageAwsComponent,
-    PageChefComponent
+    PageChefComponent,
+    Page404Component
   ],
   imports: [
     HttpModule,
