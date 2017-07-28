@@ -2,13 +2,11 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+.example-sidenav {
+  padding: 30px;
+  position: fixed;
 }
 
-.example-sidenav {
-  padding: 20px;
+.example-sidenav-content {
+  padding: 0 30px;
 }
