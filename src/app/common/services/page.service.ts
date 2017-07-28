@@ -42,4 +42,10 @@ export class PageService {
             //.do(data => (this.NewsCategoryData = JSON.stringify(data)))
             .catch(this.handleError);
   }
+      
+  getRefreshDB(): Observable<any> {
+    return this._http.get(this._backEndUrl + '/refresh', this.getRequestOptions())
+            .map((Response: Response) => <any>Response.json())
+            .catch(this.handleError);
+  }
 }
