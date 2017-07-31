@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  API_HOST: "http://10.10.4.141",
+  API_HOST: "http://sys-audit-api",
   API_PORT: "3000",
 };

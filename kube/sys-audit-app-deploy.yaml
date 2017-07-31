@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sys-audit-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sys-audit-app
+        tier: frontend
+        track: stable
+    spec:
+      containers:
+      - name: sys-audit-app
+        image: quay.io/cwhatley/test-app:latest
+        ports:
+        - name: sys-audit-app
+          containerPort: 8080

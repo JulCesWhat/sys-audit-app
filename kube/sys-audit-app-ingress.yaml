@@ -1,0 +1,9 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sys-audit-app-web
+  namespace: default
+spec:
+  backend:
+    serviceName: sys-audit-app
+    servicePort: 8080
