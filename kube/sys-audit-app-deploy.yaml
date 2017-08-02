@@ -13,8 +13,10 @@ spec:
     spec:
       containers:
       - name: sys-audit-app
-        image: quay.io/cwhatley/test-app
+        image: quay.io/frontline/sys-audit-app
         ports:
         - name: sys-audit-app
           containerPort: 8080
           hostPort: 8080
+      imagePullSecrets:
+        - name: quay
