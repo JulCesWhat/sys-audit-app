@@ -22,7 +22,7 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class PageAwsComponent {
 
-  displayedColumns = ['awsName', 'awsOwner', 'awsIntanceID', 'awsPrivateIP', 'awsManaged'];
+  displayedColumns = ['awsName', 'awsOwner', 'awsPlatform', 'awsIntanceID', 'awsPrivateIP', 'awsManaged'];
   ec2Data: ec2Item[]
   dataSource: ExampleDataSource | null;
   exampleDatabase: ExampleDatabase
@@ -112,6 +112,7 @@ export class ExampleDataSource extends DataSource<any> {
           switch (this._sort.active) {
             //case 'awsName': searchStr = (item.name).toLocaleLowerCase(); break;
             case "awsOwner": searchStr = (item.owner).toLocaleLowerCase(); break;
+            case "awsPlatform": searchStr = (item.platform ? item.platform : "").toLocaleLowerCase(); break;
             case "awsIntanceID": searchStr = (item.instanceId).toLocaleLowerCase(); break;
             case "awsPrivateIP": searchStr = (item.privateIP).toLocaleLowerCase(); break;
             //case "awsManaged": searchStr = (item.managedByChef).toLocaleLowerCase(); break;
@@ -139,6 +140,7 @@ export class ExampleDataSource extends DataSource<any> {
       switch (this._sort.active) {
         case 'awsName': [propertyA, propertyB] = [a.name, b.name]; break;
         case 'awsOwner': [propertyA, propertyB] = [a.owner, b.owner]; break;
+        case 'awsPlatform': [propertyA, propertyB] = [a.platform, b.platform]; break;
         case 'awsIntanceID': [propertyA, propertyB] = [a.instanceId, b.instanceId]; break;
         case 'awsPrivateIP': [propertyA, propertyB] = [a.privateIP, b.privateIP]; break;
         case 'awsManaged': [propertyA, propertyB] = [a.managedByChef, b.managedByChef]; break;

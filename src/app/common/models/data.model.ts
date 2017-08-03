@@ -3,9 +3,10 @@ export interface ec2Item {
 	name: 			string
 	owner: 			string
 	deparment: 		string
-	instanceId:		string
-	privateIP:		string
 	environment: 	string
+	instanceId:		string
+	platform:		string
+	privateIP:		string
 	managedByChef:	string
 }
 

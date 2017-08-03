@@ -22,6 +22,12 @@
       <md-cell *cdkCellDef="let row"> {{row.owner}} </md-cell>
     </ng-container>
 
+    <!-- Owner Column -->
+    <ng-container cdkColumnDef="awsPlatform">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Platform </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.platform}} </md-cell>
+    </ng-container>
+
     <!-- Instance ID Column -->
     <ng-container cdkColumnDef="awsIntanceID">
       <md-header-cell *cdkHeaderCellDef md-sort-header> Instance ID </md-header-cell>
