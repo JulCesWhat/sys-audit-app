@@ -19,3 +19,13 @@ export interface chefItem {
 	roles: 			string
 	adressIP:		string
 }
+
+export interface chefUser {
+	id:				string
+	name: 			string
+}
+
+export interface chefContainer {
+	chefItems: 		chefItem[]
+	chefUsers:		chefUser[]
+}

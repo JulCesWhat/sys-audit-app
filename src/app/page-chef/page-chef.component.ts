@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { chefItem } from './../common/models/data.model';
+import { chefItem, chefUser, chefContainer } from './../common/models/data.model';
 
 import { ElementRef, ViewChild } from '@angular/core';
 import { DataSource } from '@angular/cdk';
@@ -23,13 +23,18 @@ import 'rxjs/add/observable/fromEvent';
 export class PageChefComponent implements OnInit {
 
   displayedColumns = ['cdName', 'cdAdressIP', 'cdEnvironment', 'cdPlatform', 'cdSecure'];
-  chefData: chefItem[]
+  chefContainer: chefContainer;
   dataSource: ExampleDataSource | null;
-  exampleDatabase: ExampleDatabase
+  exampleDatabase: ExampleDatabase;
+  colAmmount: string;
+  chefUsers: chefUser[];
   
   constructor(private route: ActivatedRoute, private changeDetector: ChangeDetectorRef) {
-    this.chefData = this.route.snapshot.data['chefData'];
-    this.exampleDatabase = new ExampleDatabase(this.chefData);
+    this.chefContainer = this.route.snapshot.data['chefData'];
+    console.log('This is the users that have been able to be retrieved.')
+    this.colAmmount = ((this.chefContainer.chefUsers).length).toString();
+    this.chefUsers = this.chefContainer.chefUsers;
+    this.exampleDatabase = new ExampleDatabase(this.chefContainer.chefItems);
   }
 
   @ViewChild('filter') filter: ElementRef;
