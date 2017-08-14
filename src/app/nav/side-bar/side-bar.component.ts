@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageService } from './../../common/services/page.service'
-import { Subject, Observable } from 'rxjs/RX';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { MdSnackBar } from '@angular/material';
 
 

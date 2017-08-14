@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { PageService } from './../common/services/page.service';
-import { Subject, Observable } from 'rxjs/RX';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/observable/of';
 
 
 @Injectable()
