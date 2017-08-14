@@ -7,8 +7,6 @@ import { MaterialModule, MdTableModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk';
 
-import 'hammerjs';
-
 import { appRoutes } from './routes';
 
 import { PageService } from './common/services/page.service';
